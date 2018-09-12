@@ -9,7 +9,7 @@ class App extends Component {
     searchResult: [],
     errorMsg:[],
     listClick: '',
-    sideHidden: false
+    sideHidden: true
   }
 
   componentDidMount() {
@@ -74,12 +74,58 @@ class App extends Component {
     /* search state will mirror locations state initially, but change depending on search criteria
     * this state will manipulate both the search list and the map markers.
     */
-    this.setState({searchResult: setLocations})
+    //this.setState({searchResult: setLocations})
     //console.log(this.state.locations)
   }
+
+  removeLocations = (result) => {
+    //returns an array of locations from the search component
+    this.setState({ searchResult: result });
+  }
+
+  setError(message){
+    //Fetch request errors are stored.
+    this.setState({errorMsg: message})
+  }
+
+  /* Integral to the search listings interacting with the markers
+  * on google maps. When an item is clicked a unique identifier
+  * is stored in state. The maps component checks for changes in this state
+  * and then matches the unique identifier from the listing to the map marker.
+  */
+  listClick = (event) => {
+    if (event.className === "location-name" || event.className === "location-type") {
+      let clickedId = event.parentElement.id
+      this.setState({ listClick: clickedId });
+    }
+  }
+
   render() {
     return (
-      <div className="App">
+      <div>
+        <header className="header">
+          <div className="inner">
+            <h1 className="title">
+              Places to go in Orpington
+            </h1>
+            <a
+              id="menu"
+              tabIndex="0"
+              role="button"
+              aria-label="menu button"
+              aria-describedby="location search list"
+              onClick={this.hideShowSide}>
+              &#9776;
+            </a>
+          </div>
+        </header>
+        <LocationsSideList
+          locations = {this.state.locations}
+          searchResult = {this.state.searchResult}
+          listClick = {this.listClick}
+          removeLocations = {this.removeLocations}
+          sideHidden = {this.state.sideHidden}
+        />
       {this.state.locations[0] && (
         <MapContainer
           locations={this.state.locations}
