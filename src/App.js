@@ -126,9 +126,10 @@ class App extends Component {
           removeLocations = {this.removeLocations}
           sideHidden = {this.state.sideHidden}
         />
-      {this.state.searchResult[0] && (
+      {this.state.locations[0] && (
         <MapContainer
           searchResult = {this.state.searchResult}
+          listClick = {this.state.listClick}
         />
       )}
       </div>

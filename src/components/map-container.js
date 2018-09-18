@@ -33,6 +33,7 @@ class MapContainer extends Component {
 				searchResult={this.props.searchResult}
 				onToggleOpen={this.onToggleOpen}
 				markerLocation={this.state.markerLocation[0]}
+				listClick={this.props.listClick}
 			/>
 		);
 	}
