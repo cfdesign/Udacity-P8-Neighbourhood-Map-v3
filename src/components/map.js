@@ -17,7 +17,7 @@ const Map = withScriptjs(withGoogleMap((props) => {
                     key={location.id}
                     location={location}
                     onToggleOpen={props.onToggleOpen}
-                    listClick={props.listClick}
+                    listClicked={props.listClicked}
                 />
             )}
             {props.markerLocation &&

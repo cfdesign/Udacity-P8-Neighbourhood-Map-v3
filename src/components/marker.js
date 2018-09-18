@@ -4,14 +4,14 @@ import { Marker } from "react-google-maps";
 class MapMarker extends Component {
 
 	componentDidUpdate(prevProps) {
-        if (this.props.listClick !== prevProps.listClick) {
+        if (this.props.listClicked !== prevProps.listClicked) {
             // This function can also conversely add markers, it serves to both add and remove.
             this.open()
 		}
 	}
 
     open() {
-        if (this.props.location.id === this.props.listClick) {
+        if (this.props.location.id === this.props.listClicked) {
             this.props.onToggleOpen(this.props.location)
         }
         //this.props.location.id === this.props.listClick ?
@@ -26,7 +26,6 @@ class MapMarker extends Component {
                 position={{lat: this.props.location.location.lat, lng: this.props.location.location.lng}}
                 //animation={window.google.maps.Animation.DROP}
                 animation= {2}
-                    //this.props.listClick === this.props.location.id
                 onClick={() => this.props.onToggleOpen(this.props.location)}
             />
         );

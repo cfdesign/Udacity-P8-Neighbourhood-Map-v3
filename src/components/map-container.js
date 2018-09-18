@@ -9,12 +9,13 @@ class MapContainer extends Component {
 	componentDidUpdate(prevProps) {
         if (this.props.searchResult !== prevProps.searchResult) {
             // This function can also conversely add markers, it serves to both add and remove.
-            this.onToggleOpen(null)
+			this.onToggleOpen(null)
 		}
 	}
 
     onToggleOpen  = (location) => {
 		this.setState({markerLocation: [location]})
+		this.props.listClick()
 		//if (this.state.markerLocation[0]) {
 			//this.state.markerLocation[0].name ? this.setState({isOpen: true}) : this.setState({isOpen: false})
 		//}
@@ -33,7 +34,7 @@ class MapContainer extends Component {
 				searchResult={this.props.searchResult}
 				onToggleOpen={this.onToggleOpen}
 				markerLocation={this.state.markerLocation[0]}
-				listClick={this.props.listClick}
+				listClicked={this.props.listClicked}
 			/>
 		);
 	}

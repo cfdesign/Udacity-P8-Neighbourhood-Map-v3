@@ -8,7 +8,7 @@ class App extends Component {
     locations : [],
     searchResult: [],
     errorMsg:[],
-    listClick: '',
+    listClicked: '',
     sideHidden: true
   }
 
@@ -97,9 +97,9 @@ class App extends Component {
   listClick = (event) => {
     if (event && (event.className === "location-name" || event.className === "location-type")) {
       let clickedId = event.parentElement.id
-      this.setState({ listClick: clickedId });
+      this.setState({ listClicked: clickedId });
     } else {
-      this.setState({ listClick: ''})
+      this.setState({ listClicked: ''})
     }
   }
 
@@ -132,7 +132,8 @@ class App extends Component {
       {this.state.locations[0] && (
         <MapContainer
           searchResult = {this.state.searchResult}
-          listClick = {this.state.listClick}
+          listClicked = {this.state.listClicked}
+          listClick = {this.listClick}
         />
       )}
       </div>
