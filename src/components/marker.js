@@ -1,31 +1,16 @@
 import React, { Component } from 'react';
-import { Marker, InfoWindow } from "react-google-maps";
+import { Marker } from "react-google-maps";
 
 class MapMarker extends Component {
-    state = {
-        isOpen: false
-    }
-    onToggleOpen  = () => {
-		this.setState({isOpen: !this.state.isOpen})
-	}
-
     render(){
+        //console.log(this.props.location)
         return(
             <Marker
                 title={this.props.location.name}
-                position={this.props.position}
+                position={{lat: this.props.location.location.lat, lng: this.props.location.location.lng}}
                 animation={window.google.maps.Animation.DROP}
-                onClick={this.onToggleOpen}
-            >
-            {this.state.isOpen &&
-                <InfoWindow onCloseClick={this.onToggleOpen}>
-                    <div>
-                        <div>{this.props.location.name}</div>
-                        <div>{this.props.location.categories[0].name}</div>
-                    </div>
-                </InfoWindow>
-            }
-            </Marker>
+                onClick={() => this.props.onToggleOpen(this.props.location)}
+            />
         );
     }
 }

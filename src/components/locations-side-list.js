@@ -14,7 +14,7 @@ class App extends Component {
         if (query !== '') {
             this.searchQuery(query);
         } else {
-            this.props.removeLocations([])
+            this.props.removeLocations(this.props.locations)
         }
     }
 
@@ -30,7 +30,7 @@ class App extends Component {
     }
 
     render() {
-        const { searchResult, locations } = this.props
+        const { searchResult } = this.props
         const { query } = this.state
 
         return (
@@ -55,7 +55,7 @@ class App extends Component {
                 <ul className="locations-list"
                     onClick={(event) => this.props.listClick(event.target)}>
                     {/* Loop through each location (if any) and display results/locations*/}
-                    {(query !== '' ? searchResult : locations).map((location) => (
+                    {searchResult.map((location) => (
                         <li
                             key={location.id}
                             role="button"

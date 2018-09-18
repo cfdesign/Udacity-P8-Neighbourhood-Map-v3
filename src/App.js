@@ -74,7 +74,7 @@ class App extends Component {
     /* search state will mirror locations state initially, but change depending on search criteria
     * this state will manipulate both the search list and the map markers.
     */
-    //this.setState({searchResult: setLocations})
+    this.setState({searchResult: setLocations})
     //console.log(this.state.locations)
   }
 
@@ -126,9 +126,9 @@ class App extends Component {
           removeLocations = {this.removeLocations}
           sideHidden = {this.state.sideHidden}
         />
-      {this.state.locations[0] && (
+      {this.state.searchResult[0] && (
         <MapContainer
-          locations={this.state.locations}
+          searchResult = {this.state.searchResult}
         />
       )}
       </div>
