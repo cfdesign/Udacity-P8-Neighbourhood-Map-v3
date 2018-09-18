@@ -81,6 +81,7 @@ class App extends Component {
   removeLocations = (result) => {
     //returns an array of locations from the search component
     this.setState({ searchResult: result });
+    this.listClick();
   }
 
   setError(message){
@@ -94,9 +95,11 @@ class App extends Component {
   * and then matches the unique identifier from the listing to the map marker.
   */
   listClick = (event) => {
-    if (event.className === "location-name" || event.className === "location-type") {
+    if (event && (event.className === "location-name" || event.className === "location-type")) {
       let clickedId = event.parentElement.id
       this.setState({ listClick: clickedId });
+    } else {
+      this.setState({ listClick: ''})
     }
   }
 
