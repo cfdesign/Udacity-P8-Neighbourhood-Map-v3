@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Marker } from "react-google-maps";
 
 class MapMarker extends Component {
+    state = {
+        animation: 2
+    }
 
 	componentDidUpdate(prevProps) {
         if (this.props.listClicked !== prevProps.listClicked) {
@@ -13,9 +16,17 @@ class MapMarker extends Component {
     open() {
         if (this.props.location.id === this.props.listClicked) {
             this.props.onToggleOpen(this.props.location)
+            this.animate()
         }
         //this.props.location.id === this.props.listClick ?
         //this.props.onToggleOpen(this.props.location) : this.setState({animation: 2})
+    }
+
+    animate() {
+        this.setState({animation: 1})
+        setTimeout(() => {
+            this.setState({animation: 0})
+        }, 1000)
     }
 
     render(){
@@ -25,8 +36,9 @@ class MapMarker extends Component {
                 title={this.props.location.name}
                 position={{lat: this.props.location.location.lat, lng: this.props.location.location.lng}}
                 //animation={window.google.maps.Animation.DROP}
-                animation= {2}
-                onClick={() => this.props.onToggleOpen(this.props.location)}
+                //icon={{anchor: new window.google.maps.Point(17, 34)}}
+                animation= {this.state.animation}
+                onClick={() => {this.props.onToggleOpen(this.props.location); this.animate()}}
             />
         );
     }
