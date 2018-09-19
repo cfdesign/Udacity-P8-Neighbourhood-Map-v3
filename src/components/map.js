@@ -9,7 +9,7 @@ const Map = withScriptjs(withGoogleMap((props) => {
     return (
         <GoogleMap
             defaultZoom={16}
-            center={ { lat:  51.377770, lng: 0.100793} }
+            defaultCenter={ { lat:  51.377770, lng: 0.100793} }
             onClick={() => props.onToggleOpen(null)}
             >
             {props.searchResult.map( location =>
