@@ -9,11 +9,11 @@ class MapContainer extends Component {
 	componentDidUpdate(prevProps) {
         if (this.props.searchResult !== prevProps.searchResult) {
             // This function can also conversely add markers, it serves to both add and remove.
-			this.onToggleOpen(null)
+			this.markerClicked(null)
 		}
 	}
 
-    onToggleOpen  = (location) => {
+    markerClicked  = (location) => {
 		this.setState({markerLocation: [location]})
 		this.props.listClick()
 		//if (this.state.markerLocation[0]) {
@@ -32,7 +32,7 @@ class MapContainer extends Component {
 				containerElement={<div style={{ height: `100vh`, width: `100%` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
 				searchResult={this.props.searchResult}
-				onToggleOpen={this.onToggleOpen}
+				markerClicked={this.markerClicked}
 				markerLocation={this.state.markerLocation[0]}
 				listClicked={this.props.listClicked}
 			/>

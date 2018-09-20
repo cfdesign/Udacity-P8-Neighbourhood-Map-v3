@@ -15,11 +15,11 @@ class MapMarker extends Component {
 
     open() {
         if (this.props.location.id === this.props.listClicked) {
-            this.props.onToggleOpen(this.props.location)
+            this.props.markerClicked(this.props.location)
             this.animate()
         }
         //this.props.location.id === this.props.listClick ?
-        //this.props.onToggleOpen(this.props.location) : this.setState({animation: 2})
+        //this.props.markerClicked(this.props.location) : this.setState({animation: 2})
     }
 
     animate() {
@@ -38,7 +38,7 @@ class MapMarker extends Component {
                 //animation={window.google.maps.Animation.DROP}
                 //icon={{anchor: new window.google.maps.Point(17, 34)}}
                 animation= {this.state.animation}
-                onClick={() => {this.props.onToggleOpen(this.props.location); this.animate()}}
+                onClick={() => {this.props.markerClicked(this.props.location); this.animate()}}
             />
         );
     }

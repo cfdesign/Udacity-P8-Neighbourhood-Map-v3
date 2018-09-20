@@ -6,7 +6,7 @@ class MapInfoWindow extends Component {
         return(
             <InfoWindow
                 position={{lat: this.props.markerLocation.location.lat, lng: this.props.markerLocation.location.lng}}
-                onCloseClick={() => this.props.onToggleOpen(null)}
+                onCloseClick={() => this.props.markerClicked(null)}
                 options={{pixelOffset: new window.google.maps.Size(0,-40)}}
             >
                 <div>

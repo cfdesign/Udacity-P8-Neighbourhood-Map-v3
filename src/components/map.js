@@ -10,20 +10,20 @@ const Map = withScriptjs(withGoogleMap((props) => {
         <GoogleMap
             defaultZoom={16}
             defaultCenter={ { lat:  51.377770, lng: 0.100793} }
-            onClick={() => props.onToggleOpen(null)}
+            onClick={() => props.markerClicked(null)}
             >
             {props.searchResult.map( location =>
                 <MapMarker
                     key={location.id}
                     location={location}
-                    onToggleOpen={props.onToggleOpen}
+                    markerClicked={props.markerClicked}
                     listClicked={props.listClicked}
                 />
             )}
             {props.markerLocation &&
                 <MapInfoWindow
                     markerLocation={props.markerLocation}
-                    onToggleOpen={props.onToggleOpen}
+                    markerClicked={props.markerClicked}
                 />
             }
         </GoogleMap>
