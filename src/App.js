@@ -104,41 +104,55 @@ class App extends Component {
   }
 
   render() {
+    if (this.state.locations[0]) {
+      return (
+        <div>
+          <header className="header">
+            <div className="inner">
+              <h1 className="title">
+                Places to go in Orpington
+              </h1>
+              <a
+                id="menu"
+                tabIndex="0"
+                role="button"
+                aria-label="menu button"
+                aria-describedby="location search list"
+                onClick={this.hideShowSide}>
+                &#9776;
+              </a>
+            </div>
+          </header>
+          <LocationsSideList
+            locations = {this.state.locations}
+            searchResult = {this.state.searchResult}
+            listClicked = {this.listClicked}
+            removeLocations = {this.removeLocations}
+            sideHidden = {this.state.sideHidden}
+          />
+          <MapContainer
+            searchResult = {this.state.searchResult}
+            listId = {this.state.listId}
+            listClicked = {this.listClicked}
+          />
+        </div>
+      )
+    } else if (this.state.errorMsg[0]) {
     return (
-      <div>
-        <header className="header">
-          <div className="inner">
-            <h1 className="title">
-              Places to go in Orpington
-            </h1>
-            <a
-              id="menu"
-              tabIndex="0"
-              role="button"
-              aria-label="menu button"
-              aria-describedby="location search list"
-              onClick={this.hideShowSide}>
-              &#9776;
-            </a>
-          </div>
-        </header>
-        <LocationsSideList
-          locations = {this.state.locations}
-          searchResult = {this.state.searchResult}
-          listClicked = {this.listClicked}
-          removeLocations = {this.removeLocations}
-          sideHidden = {this.state.sideHidden}
-        />
-      {this.state.locations[0] && (
-        <MapContainer
-          searchResult = {this.state.searchResult}
-          listId = {this.state.listId}
-          listClicked = {this.listClicked}
-        />
-      )}
+      <div className="message-cont">
+        <p className="generic-message">Sorry! Something went wrong when loading the data.</p>
+        <p className="contact-dev-message">If the problem persists, please contact the developer.</p>
+        <p className="specific-message">{this.state.errorMsg}</p>
       </div>
-    );
+    )
+  } else {
+    return (
+      <div className="message-cont">
+        <div className="generic-message">Loading page data on map...</div>
+      </div>
+    )
   }
 }
-
+}
 export default App;
+
