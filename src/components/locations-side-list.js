@@ -48,7 +48,7 @@ class App extends Component {
                  {/* If query state has value (text search input), show the query and check how many (if any) results/locations are returned*/}
                  {query && (
                     <div className='showing-locations'>
-                        <span>Search for "{query}"<br/>shows {searchResult.length > 0 ? searchResult.length : "0"} results</span>
+                        <span>Search for "{query}"<br/>shows {searchResult.length} result{searchResult.length === 1 ? "" : "s"}</span>
                     </div>
                 )}
                 </div>
