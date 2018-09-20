@@ -53,7 +53,7 @@ class App extends Component {
                 )}
                 </div>
                 <ul className="locations-list"
-                    onClick={(event) => this.props.listClick(event.target)}>
+                    onClick={(event) => this.props.listClicked(event.target)}>
                     {/* Loop through each location (if any) and display results/locations*/}
                     {searchResult.map((location) => (
                         <li

@@ -17,7 +17,7 @@ const Map = withScriptjs(withGoogleMap((props) => {
                     key={location.id}
                     location={location}
                     markerClicked={props.markerClicked}
-                    listClicked={props.listClicked}
+                    listId={props.listId}
                 />
             )}
             {props.markerLocation &&

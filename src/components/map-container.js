@@ -15,7 +15,7 @@ class MapContainer extends Component {
 
     markerClicked  = (location) => {
 		this.setState({markerLocation: [location]})
-		this.props.listClick()
+		this.props.listClicked()
 		//if (this.state.markerLocation[0]) {
 			//this.state.markerLocation[0].name ? this.setState({isOpen: true}) : this.setState({isOpen: false})
 		//}
@@ -34,7 +34,7 @@ class MapContainer extends Component {
 				searchResult={this.props.searchResult}
 				markerClicked={this.markerClicked}
 				markerLocation={this.state.markerLocation[0]}
-				listClicked={this.props.listClicked}
+				listId={this.props.listId}
 			/>
 		);
 	}

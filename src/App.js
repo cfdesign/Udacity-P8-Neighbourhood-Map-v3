@@ -8,7 +8,7 @@ class App extends Component {
     locations : [],
     searchResult: [],
     errorMsg:[],
-    listClicked: '',
+    listId: '',
     sideHidden: true
   }
 
@@ -81,7 +81,7 @@ class App extends Component {
   removeLocations = (result) => {
     //returns an array of locations from the search component
     this.setState({ searchResult: result });
-    this.listClick();
+    this.listClicked();
   }
 
   setError(message){
@@ -94,12 +94,12 @@ class App extends Component {
   * is stored in state. The maps component checks for changes in this state
   * and then matches the unique identifier from the listing to the map marker.
   */
-  listClick = (event) => {
+  listClicked = (event) => {
     if (event && (event.className === "location-name" || event.className === "location-type")) {
       let clickedId = event.parentElement.id
-      this.setState({ listClicked: clickedId });
+      this.setState({ listId: clickedId });
     } else {
-      this.setState({ listClicked: ''})
+      this.setState({ listId: ''})
     }
   }
 
@@ -125,15 +125,15 @@ class App extends Component {
         <LocationsSideList
           locations = {this.state.locations}
           searchResult = {this.state.searchResult}
-          listClick = {this.listClick}
+          listClicked = {this.listClicked}
           removeLocations = {this.removeLocations}
           sideHidden = {this.state.sideHidden}
         />
       {this.state.locations[0] && (
         <MapContainer
           searchResult = {this.state.searchResult}
-          listClicked = {this.state.listClicked}
-          listClick = {this.listClick}
+          listId = {this.state.listId}
+          listClicked = {this.listClicked}
         />
       )}
       </div>

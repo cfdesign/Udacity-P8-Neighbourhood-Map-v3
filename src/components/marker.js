@@ -7,18 +7,18 @@ class MapMarker extends Component {
     }
 
 	componentDidUpdate(prevProps) {
-        if (this.props.listClicked !== prevProps.listClicked) {
+        if (this.props.listId !== prevProps.listId) {
             // This function can also conversely add markers, it serves to both add and remove.
             this.open()
 		}
 	}
 
     open() {
-        if (this.props.location.id === this.props.listClicked) {
+        if (this.props.location.id === this.props.listId) {
             this.props.markerClicked(this.props.location)
             this.animate()
         }
-        //this.props.location.id === this.props.listClick ?
+        //this.props.location.id === this.props.listId ?
         //this.props.markerClicked(this.props.location) : this.setState({animation: 2})
     }
 
